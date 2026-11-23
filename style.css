@@ -978,3 +978,838 @@ button:focus-visible {
     font-size: 56px;
   }
 }
+
+/* ==========================================================
+   Collections Page & Shared Shop Elements
+   ========================================================== */
+
+/* Text that is read by screen readers but hidden on screen */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+/* Header extras */
+.icon-btn-badge {
+  position: relative;
+}
+
+.icon-count {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 50px;
+  background-color: #F5EBEB;
+  color: #42090D;
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: center;
+}
+
+.nav-link-active {
+  color: #ffffff;
+}
+
+.nav-link-active::after {
+  transform: scaleX(1);
+}
+
+.mobile-nav-link-active {
+  font-style: italic;
+  color: #D4B8B8;
+}
+
+/* Collections Hero */
+.collections-hero {
+  position: relative;
+  display: flex;
+  height: 82vh;
+  min-height: 600px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #330508;
+}
+
+.collections-hero-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 45% center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.collections-hero-content {
+  position: relative;
+  z-index: 10;
+  padding: 96px 24px 40px 24px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.collections-hero-box {
+  width: 100%;
+  max-width: 520px;
+  padding: 48px 32px;
+  border: 1px solid rgba(245, 235, 235, 0.18);
+  border-radius: 4px;
+  background-color: rgba(51, 5, 8, 0.32);
+  -webkit-backdrop-filter: blur(14px) saturate(115%);
+  backdrop-filter: blur(14px) saturate(115%);
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.12), 0 30px 60px rgba(20, 2, 4, 0.35);
+  text-align: center;
+}
+
+.collections-hero-title {
+  margin-top: 20px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: #F5EBEB;
+}
+
+.collections-hero-copy {
+  margin: 20px auto 0 auto;
+  max-width: 380px;
+  font-size: 14px;
+  line-height: 24px;
+  color: #D4B8B8;
+}
+
+/* Catalog Section */
+.catalog-section {
+  background-color: #42090D;
+}
+
+.catalog-container {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 80px 24px 96px 24px;
+}
+
+.catalog-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.catalog-count {
+  white-space: nowrap;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: #D4B8B8;
+}
+
+.filter-row {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-pill,
+.size-pill {
+  border-radius: 50px;
+  border: 1px solid #D4B8B8;
+  background-color: transparent;
+  padding: 10px 20px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  color: #F5EBEB;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.filter-pill:hover,
+.size-pill:hover {
+  background-color: #5E0B11;
+}
+
+.filter-pill.active,
+.size-pill.active {
+  border-color: #F5EBEB;
+  background-color: #5E0B11;
+  color: #ffffff;
+}
+
+.sort-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sort-label {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: #D4B8B8;
+}
+
+.sort-select {
+  border-radius: 50px;
+  border: 1px solid #D4B8B8;
+  background-color: #42090D;
+  padding: 10px 18px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 12px;
+  color: #F5EBEB;
+  cursor: pointer;
+}
+
+.sort-select:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.catalog-grid {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  row-gap: 44px;
+}
+
+.catalog-empty {
+  margin-top: 48px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 20px;
+  font-style: italic;
+  color: #D4B8B8;
+}
+
+/* Product Card */
+.product-card {
+  cursor: pointer;
+}
+
+.product-image-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background-color: #330508;
+}
+
+.product-open {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s ease-out;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.06);
+}
+
+.crop-left {
+  object-position: 18% center;
+}
+
+.crop-center {
+  object-position: 50% center;
+}
+
+.crop-right {
+  object-position: 82% center;
+}
+
+.product-heart {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  padding: 0;
+  border-radius: 50px;
+  border: 1px solid rgba(245, 235, 235, 0.55);
+  background-color: rgba(51, 5, 8, 0.25);
+  color: #F5EBEB;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.product-heart:hover {
+  border-color: #F5EBEB;
+  background-color: rgba(94, 11, 17, 0.8);
+}
+
+.product-heart svg {
+  fill: none;
+}
+
+.product-heart.active svg {
+  fill: #F5EBEB;
+}
+
+.product-name {
+  margin-top: 16px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: #F5EBEB;
+}
+
+.product-price {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #D4B8B8;
+}
+
+/* Rouge Privé Banner */
+.prive-banner {
+  position: relative;
+  margin-top: 72px;
+  height: 520px;
+  overflow: hidden;
+  background-color: #330508;
+}
+
+.prive-banner-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 60% center;
+}
+
+.prive-banner-gradient {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 55%;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(51, 5, 8, 0.88), rgba(51, 5, 8, 0.3), transparent);
+}
+
+.prive-banner-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 28px;
+}
+
+.prive-banner-eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: #D4B8B8;
+}
+
+.prive-banner-caption {
+  margin-top: 8px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 22px;
+  color: #F5EBEB;
+}
+
+.prive-banner-btn {
+  border-color: #D4B8B8;
+}
+
+.prive-banner + .catalog-grid {
+  margin-top: 72px;
+}
+
+/* Quick-View Modal */
+.quick-view {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.quick-view-backdrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(20, 2, 4, 0.72);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.quick-view-panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  max-width: 920px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid rgba(212, 184, 184, 0.25);
+  background-color: #330508;
+  box-shadow: 0 40px 80px rgba(10, 1, 2, 0.5);
+}
+
+.quick-view-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+}
+
+.quick-view-media {
+  position: relative;
+  min-height: 480px;
+  background-color: #42090D;
+}
+
+.quick-view-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.quick-view-info {
+  padding: 48px 40px;
+}
+
+.quick-view-tag {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: #D4B8B8;
+}
+
+.quick-view-title {
+  margin-top: 16px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.05;
+  color: #F5EBEB;
+}
+
+.quick-view-price {
+  margin-top: 12px;
+  font-size: 16px;
+  color: #F5EBEB;
+}
+
+.quick-view-desc {
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 24px;
+  color: #D4B8B8;
+}
+
+.quick-view-label {
+  margin-top: 28px;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  color: #D4B8B8;
+}
+
+.quick-view-stems {
+  margin-top: 8px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 15px;
+  font-style: italic;
+  line-height: 24px;
+  color: #F5EBEB;
+}
+
+.size-pills {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.quick-view-add {
+  margin-top: 32px;
+  border-color: #D4B8B8;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* Shopping Bag Drawer */
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 70;
+  background-color: rgba(20, 2, 4, 0.6);
+}
+
+.bag-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  width: 420px;
+  max-width: 100%;
+  padding: 28px;
+  border-left: 1px solid rgba(212, 184, 184, 0.2);
+  background-color: #330508;
+  color: #F5EBEB;
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 0.4s ease, visibility 0.4s ease;
+}
+
+.bag-drawer.open {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.drawer-title {
+  margin-top: 20px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.drawer-items {
+  margin-top: 24px;
+  flex: 1;
+  overflow-y: auto;
+  border-top: 1px solid rgba(212, 184, 184, 0.2);
+}
+
+.drawer-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(212, 184, 184, 0.2);
+}
+
+.drawer-item-image {
+  width: 64px;
+  height: 80px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.drawer-item-info {
+  flex: 1;
+}
+
+.drawer-item-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.drawer-item-meta {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #D4B8B8;
+}
+
+.drawer-item-price {
+  font-size: 13px;
+}
+
+.drawer-remove {
+  margin-top: 6px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  color: #D4B8B8;
+  cursor: pointer;
+}
+
+.drawer-remove:hover {
+  color: #ffffff;
+}
+
+.drawer-empty {
+  padding: 28px 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  color: #D4B8B8;
+}
+
+.drawer-saved {
+  margin-top: 20px;
+}
+
+.drawer-label {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  color: #D4B8B8;
+}
+
+.drawer-saved-list {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.drawer-saved-item {
+  border-radius: 50px;
+  border: 1px solid rgba(212, 184, 184, 0.5);
+  padding: 6px 14px;
+  font-size: 12px;
+  color: #F5EBEB;
+}
+
+.drawer-foot {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(212, 184, 184, 0.2);
+}
+
+.drawer-total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #D4B8B8;
+}
+
+.drawer-total {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 22px;
+  text-transform: none;
+  color: #F5EBEB;
+}
+
+.drawer-btn {
+  margin-top: 20px;
+  border-color: #D4B8B8;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid rgba(212, 184, 184, 0.18);
+  background-color: #330508;
+  padding: 56px 24px 32px 24px;
+}
+
+.footer-inner {
+  max-width: 1152px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.footer-brand {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 24px;
+  color: #F5EBEB;
+}
+
+.footer-copy {
+  margin-top: 12px;
+  max-width: 320px;
+  font-size: 13px;
+  line-height: 22px;
+  color: #D4B8B8;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.footer-link {
+  font-size: 13px;
+  color: #D4B8B8;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: #ffffff;
+}
+
+.footer-bottom {
+  max-width: 1152px;
+  margin: 48px auto 0 auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(212, 184, 184, 0.12);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(212, 184, 184, 0.7);
+}
+
+/* Collections Page Responsive */
+@media (min-width: 768px) {
+  .header-bar-brand .mobile-brand {
+    display: block;
+    margin-right: auto;
+  }
+
+  .collections-hero-box {
+    padding: 56px 48px;
+  }
+
+  .collections-hero-title {
+    font-size: 64px;
+  }
+
+  .catalog-container {
+    padding: 96px 48px 128px 48px;
+  }
+
+  .prive-banner-bar {
+    padding: 36px;
+  }
+
+  .site-footer {
+    padding: 64px 48px 32px 48px;
+  }
+}
+
+@media (max-width: 900px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+  }
+
+  .prive-banner {
+    height: 440px;
+  }
+
+  .quick-view-panel {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+  }
+
+  .quick-view-media {
+    min-height: 320px;
+  }
+
+  .quick-view-info {
+    padding: 32px 28px;
+  }
+}
+
+@media (max-width: 560px) {
+  .catalog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .prive-banner {
+    height: 420px;
+  }
+
+  .prive-banner-caption {
+    font-size: 19px;
+  }
+
+  .quick-view {
+    padding: 12px;
+  }
+
+  .quick-view-media {
+    min-height: 260px;
+  }
+
+  .quick-view-title {
+    font-size: 30px;
+  }
+
+  .bag-drawer {
+    width: 100%;
+    padding: 24px;
+  }
+}
