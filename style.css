@@ -1661,6 +1661,67 @@ button:focus-visible {
   color: #F5EBEB;
 }
 
+.add-bag-btn {
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #D4B8B8;
+  border-radius: 999px;
+  background-color: transparent;
+  color: #D4B8B8;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.add-bag-btn:hover,
+.add-bag-btn.added {
+  background-color: #5E0B11;
+  color: #FFFFFF;
+}
+
+.drawer-qty {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.drawer-qty-minus,
+.drawer-qty-plus {
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid #D4B8B8;
+  border-radius: 999px;
+  background-color: transparent;
+  color: #D4B8B8;
+  cursor: pointer;
+}
+
+.drawer-qty-minus:hover,
+.drawer-qty-plus:hover {
+  background-color: #5E0B11;
+}
+
+.drawer-qty-value {
+  min-width: 1.5rem;
+  text-align: center;
+  color: #D4B8B8;
+}
+
+.drawer-checkout {
+  width: 100%;
+  margin-bottom: 0.75rem;
+}
+
+.drawer-message {
+  margin-bottom: 0.75rem;
+  color: #D4B8B8;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
 .drawer-btn {
   margin-top: 20px;
   border-color: #D4B8B8;

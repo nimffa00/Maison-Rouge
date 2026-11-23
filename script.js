@@ -465,6 +465,23 @@ function removeFromBag(index) {
   renderDrawer();
 }
 
+function changeQty(index, change) {
+  const bag = readList(BAG_KEY);
+  const updated = [];
+  for (let i = 0; i < bag.length; i++) {
+    if (i === index) {
+      const newQty = bag[i].qty + change;
+      if (newQty >= 1 && newQty <= 10) {
+        bag[i].qty = newQty;
+      }
+    }
+    updated.push(bag[i]);
+  }
+  writeList(BAG_KEY, updated);
+  updateCounters();
+  renderDrawer();
+}
+
 /* ---------- Header counters ---------- */
 
 function setCount(elementId, count) {
@@ -521,6 +538,11 @@ function renderDrawer() {
     html += '<div class="drawer-item-info">';
     html += '<p class="drawer-item-name">' + bouquet.name + '</p>';
     html += '<p class="drawer-item-meta">' + getSize(bag[i].size).label + ' &middot; Qty ' + bag[i].qty + '</p>';
+    html += '<div class="drawer-qty">';
+    html += '<button type="button" class="drawer-qty-minus">-</button>';
+    html += '<span class="drawer-qty-value">' + bag[i].qty + '</span>';
+    html += '<button type="button" class="drawer-qty-plus">+</button>';
+    html += '</div>';
     html += '<button type="button" class="drawer-remove">Remove</button>';
     html += '</div>';
     html += '<p class="drawer-item-price">$' + linePrice + '</p>';
@@ -537,6 +559,20 @@ function renderDrawer() {
   for (let i = 0; i < removeButtons.length; i++) {
     removeButtons[i].addEventListener('click', function() {
       removeFromBag(renderedIndexes[i]);
+    });
+  }
+
+  const minusButtons = document.querySelectorAll('.drawer-qty-minus');
+  for (let i = 0; i < minusButtons.length; i++) {
+    minusButtons[i].addEventListener('click', function() {
+      changeQty(renderedIndexes[i], -1);
+    });
+  }
+
+  const plusButtons = document.querySelectorAll('.drawer-qty-plus');
+  for (let i = 0; i < plusButtons.length; i++) {
+    plusButtons[i].addEventListener('click', function() {
+      changeQty(renderedIndexes[i], 1);
     });
   }
 
@@ -564,6 +600,10 @@ function openDrawer() {
   }
   lastFocusedElement = document.activeElement;
   renderDrawer();
+  const message = document.getElementById('drawer-message');
+  if (message) {
+    message.classList.add('hidden');
+  }
   drawer.classList.add('open');
   overlay.classList.remove('hidden');
   document.body.classList.add('no-scroll');
@@ -584,6 +624,24 @@ function closeDrawer() {
   if (lastFocusedElement) {
     lastFocusedElement.focus();
   }
+}
+
+function checkout() {
+  const message = document.getElementById('drawer-message');
+  if (!message) {
+    return;
+  }
+
+  const bag = readList(BAG_KEY);
+  if (bag.length === 0) {
+    message.textContent = 'Your bag is empty. Choose a bouquet first.';
+  } else {
+    writeList(BAG_KEY, []);
+    updateCounters();
+    renderDrawer();
+    message.textContent = 'Thank you. Your order is confirmed and our atelier will contact you about delivery.';
+  }
+  message.classList.remove('hidden');
 }
 
 /* ---------- Collections catalog ---------- */
@@ -668,6 +726,7 @@ function buildProductCard(bouquet) {
   html += '</div>';
   html += '<h3 class="product-name">' + bouquet.name + '</h3>';
   html += '<p class="product-price">$' + bouquet.price + '</p>';
+  html += '<button type="button" class="add-bag-btn">Add to Bag</button>';
   html += '</li>';
   return html;
 }
@@ -742,6 +801,24 @@ function setupCardEvents() {
       }
     });
   }
+
+  const bagButtons = document.querySelectorAll('.add-bag-btn');
+  for (let i = 0; i < bagButtons.length; i++) {
+    bagButtons[i].addEventListener('click', function(event) {
+      event.stopPropagation();
+      addToBag(visibleBouquets[i].id, 'classic');
+      showAddedState(bagButtons[i]);
+    });
+  }
+}
+
+function showAddedState(button) {
+  button.textContent = 'Added ✓';
+  button.classList.add('added');
+  setTimeout(function() {
+    button.textContent = 'Add to Bag';
+    button.classList.remove('added');
+  }, 1400);
 }
 
 /* ---------- Quick-view modal ---------- */
@@ -878,6 +955,13 @@ function setupShopEvents() {
       addToBag(quickViewBouquet.id, quickViewSize);
       closeQuickView();
       openDrawer();
+    });
+  }
+
+  const checkoutButton = document.getElementById('drawer-checkout');
+  if (checkoutButton) {
+    checkoutButton.addEventListener('click', function() {
+      checkout();
     });
   }
 
