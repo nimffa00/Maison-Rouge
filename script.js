@@ -31,110 +31,160 @@ const BOUQUETS = [
     name: 'Noir Velvet',
     price: 300,
     collection: 'signature',
-    image: 'img/rose-edit.jpg',
-    crop: 'crop-center',
-    alt: 'Dense arrangement of deep red velvet roses in low, moody light',
+    image: 'img/collections/noir-velvet.jpg',
+    alt: 'A single deep red Black Baccara rose glowing in dark, moody shadow',
     description: 'Our darkest roses, packed close like velvet folds. A brooding, romantic gesture for evenings that deserve weight.',
     stems: 'Black Baccara rose, garden rose, dark ruscus'
-  },
-  {
-    id: 'velvet-blush',
-    name: 'Velvet Blush',
-    price: 280,
-    collection: 'seasonal',
-    image: 'img/bouquet-edit.jpg',
-    crop: 'crop-right',
-    alt: 'Red calla lilies and roses arranged before a paneled cream wall',
-    description: 'Calla lilies arc over soft red roses in a composition that blushes rather than shouts. Gathered from the season at its fullest.',
-    stems: 'Calla lily, spray rose, red berries, branch'
-  },
-  {
-    id: 'golden-reverie',
-    name: 'Golden Reverie',
-    price: 120,
-    collection: 'seasonal',
-    image: 'img/hero-ranunculus.jpg',
-    crop: 'crop-left',
-    alt: 'Ivory ranunculus blooms glowing against a crimson backdrop',
-    description: 'A small, luminous posy of ranunculus with warm golden centres. A gift for a quiet thank-you.',
-    stems: 'Ivory ranunculus, butter tulip, eucalyptus'
-  },
-  {
-    id: 'light-nightmare',
-    name: 'Light Nightmare',
-    price: 240,
-    collection: 'signature',
-    image: 'img/bouquet-edit.jpg',
-    crop: 'crop-left',
-    alt: 'Glossy red anthuriums and dahlias in front of crimson velvet curtains',
-    description: 'Sculptural anthuriums and moody dahlias with a theatrical, slightly wicked silhouette. Beautiful in candlelight.',
-    stems: 'Anthurium, dahlia, orchid, amaranthus'
-  },
-  {
-    id: 'rouge-prive',
-    name: 'Rouge Privé',
-    price: 350,
-    collection: 'prive',
-    image: 'img/bouquet-edit.jpg',
-    crop: 'crop-center',
-    alt: 'Opulent arrangement of red anthuriums, dahlias, calla lilies and roses',
-    description: 'Our house signature, composed privately for each client. Every Rouge Privé is unique, layered in shades of crimson and wine.',
-    stems: 'Anthurium, calla lily, dahlia, rose, berried branch'
   },
   {
     id: 'blanc-eternel',
     name: 'Blanc Éternel',
     price: 260,
     collection: 'blanc-rouge',
-    image: 'img/blanc-rouge.jpg',
-    crop: 'crop-center',
-    alt: 'Tall sculptural arrangement of white blossoms and red branches in a dark interior',
-    description: 'White blossoms rise against slender red branches. Pure, architectural and calm, with a single line of colour.',
-    stems: 'White blossom, red dogwood, white lisianthus'
+    image: 'img/collections/blanc-eternel.jpg',
+    alt: 'An ivory garden rose with dark leaves against a warm burgundy backdrop',
+    description: 'Ivory garden roses rise against glossy dark foliage. Pure, architectural and calm, with a single line of shadow.',
+    stems: 'Ivory garden rose, camellia leaf, white lisianthus'
+  },
+  {
+    id: 'velvet-blush',
+    name: 'Velvet Blush',
+    price: 280,
+    collection: 'seasonal',
+    image: 'img/collections/velvet-blush.jpg',
+    alt: 'Blush, ivory and rose-pink garden roses gathered in a clear glass vase',
+    description: 'Blush and ivory garden roses gathered loosely in glass. A composition that blushes rather than shouts.',
+    stems: 'Blush garden rose, ivory peony, spray rose'
   },
   {
     id: 'crimson-whisper',
     name: 'Crimson Whisper',
     price: 190,
     collection: 'occasions',
-    image: 'img/special-occasions.jpg',
-    crop: 'crop-center',
-    alt: 'Dark red gift box tied with a glossy crimson satin ribbon',
-    description: 'A compact bouquet of red roses presented in our signature crimson box, tied with satin. Made for anniversaries.',
-    stems: 'Red rose, spray rose, satin ribbon box'
+    image: 'img/collections/crimson-whisper.jpg',
+    alt: 'A dew-covered crimson rose in full bloom against a soft red background',
+    description: 'Crimson roses still holding the morning dew, tied with satin. Made for anniversaries and quiet promises.',
+    stems: 'Red Naomi rose, spray rose, satin ribbon'
   },
   {
-    id: 'midnight-ranunculus',
-    name: 'Midnight Ranunculus',
-    price: 220,
-    collection: 'prive',
-    image: 'img/hero-ranunculus.jpg',
-    crop: 'crop-right',
-    alt: 'Large white ranunculus blooms against a deep crimson backdrop',
-    description: 'Oversized ranunculus layered in soft folds, set against deep wine foliage. A late-night bloom, bespoke in scale.',
-    stems: 'Ranunculus, hellebore, dark foliage'
+    id: 'light-nightmare',
+    name: 'Light Nightmare',
+    price: 240,
+    collection: 'signature',
+    image: 'img/collections/light-nightmare.jpg',
+    alt: 'A sculptural magenta dahlia with layered petals against a plum backdrop',
+    description: 'Sculptural dahlias with a theatrical, slightly wicked silhouette. Beautiful in candlelight.',
+    stems: 'Magenta dahlia, orchid, amaranthus'
   },
   {
     id: 'ivory-ember',
     name: 'Ivory Ember',
     price: 210,
     collection: 'blanc-rouge',
-    image: 'img/hero-ranunculus.jpg',
-    crop: 'crop-center',
-    alt: 'White ranunculus heads clustered against a red background',
-    description: 'Creamy ranunculus warmed with touches of ember red. Gentle enough for a wedding table, bold enough for a dinner.',
-    stems: 'White ranunculus, red anemone, jasmine vine'
+    image: 'img/collections/ivory-ember.jpg',
+    alt: 'An open white magnolia flower with a golden centre on a deep burgundy ground',
+    description: 'Creamy magnolia petals warmed by an ember-gold heart. Gentle enough for a wedding table, bold enough for a dinner.',
+    stems: 'White magnolia, ivory ranunculus, jasmine vine'
+  },
+  {
+    id: 'golden-reverie',
+    name: 'Golden Reverie',
+    price: 120,
+    collection: 'seasonal',
+    image: 'img/collections/golden-reverie.jpg',
+    alt: 'Champagne and apricot dahlias clustered together in soft light',
+    description: 'A luminous posy of champagne dahlias with warm golden centres. A gift for a quiet thank-you.',
+    stems: 'Champagne dahlia, apricot ranunculus, eucalyptus'
+  },
+  {
+    id: 'rouge-prive',
+    name: 'Rouge Privé',
+    price: 350,
+    collection: 'prive',
+    image: 'img/collections/rouge-prive.jpg',
+    alt: 'A hand-tied bouquet of red ranunculus, burgundy dahlias and blush roses held against ivory silk',
+    description: 'Our house signature, composed privately for each client. Every Rouge Privé is unique, layered in shades of crimson and wine.',
+    stems: 'Red ranunculus, burgundy dahlia, blush spray rose, astilbe'
+  },
+  {
+    id: 'calla-sculpture',
+    name: 'Calla Sculpture',
+    price: 270,
+    collection: 'signature',
+    image: 'img/collections/calla-sculpture.jpg',
+    alt: 'Blush calla lilies with long sculptural stems among dark green leaves',
+    description: 'Calla lilies chosen for the curve of their stems, arranged like a quiet piece of architecture.',
+    stems: 'Blush calla lily, calla leaf, papyrus'
+  },
+  {
+    id: 'tulipe-blanche',
+    name: 'Tulipe Blanche',
+    price: 150,
+    collection: 'blanc-rouge',
+    image: 'img/collections/tulipe-blanche.jpg',
+    alt: 'A bunch of white French tulips wrapped in pale paper against a warm wall',
+    description: 'White French tulips that keep opening for days. Simple, graphic and endlessly elegant.',
+    stems: 'White French tulip, soft paper wrap'
+  },
+  {
+    id: 'peony-rouge',
+    name: 'Peony Rouge',
+    price: 290,
+    collection: 'seasonal',
+    image: 'img/collections/peony-rouge.jpg',
+    alt: 'Lush rose-pink peonies with ruffled petals gathered closely together',
+    description: 'Abundant peonies at the peak of their season, ruffled and romantic, gathered as generously as we can find them.',
+    stems: 'Rose peony, blush peony, garden rose'
   },
   {
     id: 'ribbon-noir',
     name: 'Ribbon Noir',
     price: 330,
     collection: 'occasions',
-    image: 'img/rose-edit.jpg',
-    crop: 'crop-center',
-    alt: 'Deep red roses arranged tightly in a dark, moody setting',
+    image: 'img/collections/ribbon-noir.jpg',
+    alt: 'A velvet red Grand Prix rose with dark leaves in deep shadow',
     description: 'A generous dome of velvet roses, hand-tied and wrapped for the moments that need to be unforgettable.',
     stems: 'Grand Prix rose, garden rose, ribbon wrap'
+  },
+  {
+    id: 'midnight-ranunculus',
+    name: 'Midnight Ranunculus',
+    price: 220,
+    collection: 'prive',
+    image: 'img/collections/midnight-ranunculus.jpg',
+    alt: 'A dense mass of small red blooms layered like a velvet carpet',
+    description: 'Hundreds of small red blooms layered in soft folds, set against deep wine foliage. A late-night arrangement, bespoke in scale.',
+    stems: 'Red ranunculus, begonia, dark foliage'
+  },
+  {
+    id: 'dahlia-blanc',
+    name: 'Dahlia Blanc',
+    price: 180,
+    collection: 'blanc-rouge',
+    image: 'img/collections/dahlia-blanc.jpg',
+    alt: 'A perfectly round lilac-white dahlia against a dark background',
+    description: 'One perfect café au lait dahlia, presented on its own so every petal can be admired.',
+    stems: 'Café au lait dahlia, single stem'
+  },
+  {
+    id: 'rose-atelier',
+    name: 'Rose Atelier',
+    price: 95,
+    collection: 'occasions',
+    image: 'img/collections/rose-atelier.jpg',
+    alt: 'A single blush rose in a slender glass bottle against a shadowed wall',
+    description: 'A single long-stem rose in a hand-blown bud vase. The smallest gesture in the atelier, and often the most remembered.',
+    stems: 'Champagne rose, glass bud vase'
+  },
+  {
+    id: 'eucalyptus-noir',
+    name: 'Eucalyptus Noir',
+    price: 230,
+    collection: 'prive',
+    image: 'img/collections/dahlia-noir.jpg',
+    alt: 'A pale blush dahlia framed by silver eucalyptus leaves in low light',
+    description: 'A pale dahlia set against silver eucalyptus and deep shadow. Made to order, with stems chosen at the market that morning.',
+    stems: 'Blush dahlia, silver dollar eucalyptus, smoke bush'
   }
 ];
 
@@ -569,7 +619,7 @@ function renderDrawer() {
     total += linePrice;
 
     html += '<li class="drawer-item">';
-    html += '<img src="' + bouquet.image + '" alt="' + bouquet.alt + '" class="drawer-item-image ' + bouquet.crop + '">';
+    html += '<img src="' + bouquet.image + '" alt="' + bouquet.alt + '" class="drawer-item-image">';
     html += '<div class="drawer-item-info">';
     html += '<p class="drawer-item-name">' + bouquet.name + '</p>';
     html += '<p class="drawer-item-meta">' + getSize(bag[i].size).label + ' &middot; $' + unitPrice + ' each</p>';
@@ -749,19 +799,25 @@ function buildProductCard(bouquet) {
   html += '<li class="product-card">';
   html += '<div class="product-image-wrap">';
   html += '<button type="button" class="product-open">';
-  html += '<img src="' + bouquet.image + '" alt="' + bouquet.alt + '" class="product-image ' + bouquet.crop + '">';
+  html += '<img src="' + bouquet.image + '" alt="' + bouquet.alt + '" class="product-image" loading="lazy" width="900" height="1125">';
+  html += '<span class="product-quick">Quick view</span>';
   html += '<span class="visually-hidden">Quick view ' + bouquet.name + '</span>';
   html += '</button>';
   html += '<button type="button" class="' + heartClass + '">';
-  html += '<svg width="15" height="15" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">';
+  html += '<svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">';
   html += '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path>';
   html += '</svg>';
   html += '<span class="visually-hidden">Save ' + bouquet.name + '</span>';
   html += '</button>';
   html += '</div>';
+  html += '<div class="product-info">';
+  html += '<p class="product-tag">' + getFilterLabel(bouquet.collection) + '</p>';
+  html += '<div class="product-row">';
   html += '<h3 class="product-name">' + bouquet.name + '</h3>';
   html += '<p class="product-price">$' + bouquet.price + '</p>';
+  html += '</div>';
   html += '<button type="button" class="add-bag-btn">Add to Bag</button>';
+  html += '</div>';
   html += '</li>';
   return html;
 }
@@ -902,7 +958,7 @@ function openQuickView(bouquet) {
   if (image) {
     image.src = bouquet.image;
     image.alt = bouquet.alt;
-    image.className = 'quick-view-image ' + bouquet.crop;
+    image.className = 'quick-view-image';
   }
 
   setText('qv-tag', getFilterLabel(bouquet.collection));

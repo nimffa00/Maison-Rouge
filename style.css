@@ -1038,8 +1038,9 @@ button:focus-visible {
 .collections-hero {
   position: relative;
   display: flex;
-  height: 82vh;
-  min-height: 600px;
+  height: 88vh;
+  min-height: 640px;
+  max-height: 940px;
   align-items: center;
   justify-content: center;
   overflow: hidden;
@@ -1055,49 +1056,66 @@ button:focus-visible {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 45% center;
+  object-position: center center;
   pointer-events: none;
   z-index: 0;
+}
+
+.collections-hero .frost-vignette {
+  height: 560px;
+  max-width: 860px;
 }
 
 .collections-hero-content {
   position: relative;
   z-index: 10;
-  padding: 96px 24px 40px 24px;
   width: 100%;
   display: flex;
   justify-content: center;
+  padding: 112px 24px 56px 24px;
 }
 
 .collections-hero-box {
   width: 100%;
-  max-width: 520px;
-  padding: 48px 32px;
-  border: 1px solid rgba(245, 235, 235, 0.18);
-  border-radius: 4px;
-  background-color: rgba(51, 5, 8, 0.32);
+  max-width: 620px;
+  padding: 52px 32px;
+  border: 1px solid rgba(245, 235, 235, 0.16);
+  background-color: rgba(51, 5, 8, 0.34);
   -webkit-backdrop-filter: blur(14px) saturate(115%);
   backdrop-filter: blur(14px) saturate(115%);
-  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.12), 0 30px 60px rgba(20, 2, 4, 0.35);
+  box-shadow: 0 30px 60px rgba(20, 2, 4, 0.35);
   text-align: center;
 }
 
 .collections-hero-title {
-  margin-top: 20px;
+  margin-top: 22px;
   font-family: "Playfair Display", Georgia, serif;
   font-size: 48px;
   font-weight: 500;
-  line-height: 1.02;
+  line-height: 1;
   letter-spacing: -0.025em;
   color: #F5EBEB;
 }
 
+.collections-hero-rule {
+  display: block;
+  width: 40px;
+  height: 1px;
+  margin: 26px auto 0 auto;
+  background-color: rgba(212, 184, 184, 0.6);
+}
+
 .collections-hero-copy {
-  margin: 20px auto 0 auto;
+  margin: 22px auto 0 auto;
   max-width: 380px;
-  font-size: 14px;
-  line-height: 24px;
+  font-size: 15px;
+  line-height: 28px;
   color: #D4B8B8;
+}
+
+.collections-hero-btn {
+  margin-top: 32px;
+  border-color: #D4B8B8;
 }
 
 /* Catalog Section */
@@ -1108,25 +1126,41 @@ button:focus-visible {
 .catalog-container {
   max-width: 1152px;
   margin: 0 auto;
-  padding: 80px 24px 96px 24px;
+  padding: 88px 24px 104px 24px;
 }
 
-.catalog-toolbar {
+.catalog-head {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  align-items: flex-end;
   justify-content: space-between;
-  gap: 16px;
+  gap: 20px;
+}
+
+.catalog-title {
+  margin-top: 24px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: #F5EBEB;
 }
 
 .catalog-count {
   white-space: nowrap;
-  font-size: 12px;
-  letter-spacing: 0.05em;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
   color: #D4B8B8;
 }
 
 .filter-row {
-  margin-top: 32px;
+  margin-top: 40px;
+  padding: 24px 0;
+  border-top: 1px solid rgba(212, 184, 184, 0.18);
+  border-bottom: 1px solid rgba(212, 184, 184, 0.18);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -1214,6 +1248,8 @@ button:focus-visible {
 
 /* Product Card */
 .product-card {
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
 }
 
@@ -1221,10 +1257,12 @@ button:focus-visible {
   position: relative;
   overflow: hidden;
   aspect-ratio: 4 / 5;
+  border: 1px solid rgba(212, 184, 184, 0.14);
   background-color: #330508;
 }
 
 .product-open {
+  position: relative;
   display: block;
   width: 100%;
   height: 100%;
@@ -1235,79 +1273,124 @@ button:focus-visible {
 }
 
 .product-image {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   transition: transform 1.2s ease-out;
 }
 
 .product-card:hover .product-image {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
-.crop-left {
-  object-position: 18% center;
+.product-quick {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 40px 16px 16px 16px;
+  background: linear-gradient(to top, rgba(51, 5, 8, 0.85), transparent);
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  text-align: left;
+  color: #F5EBEB;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-.crop-center {
-  object-position: 50% center;
-}
-
-.crop-right {
-  object-position: 82% center;
+.product-card:hover .product-quick {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .product-heart {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 10px;
+  right: 10px;
   z-index: 2;
   display: grid;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   place-items: center;
   padding: 0;
+  border: none;
   border-radius: 50px;
-  border: 1px solid rgba(245, 235, 235, 0.55);
-  background-color: rgba(51, 5, 8, 0.25);
+  background-color: transparent;
   color: #F5EBEB;
   cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  filter: drop-shadow(0 1px 3px rgba(20, 2, 4, 0.6));
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .product-heart:hover {
-  border-color: #F5EBEB;
-  background-color: rgba(94, 11, 17, 0.8);
+  transform: scale(1.1);
 }
 
 .product-heart svg {
   fill: none;
+  transition: fill 0.3s ease;
 }
 
 .product-heart.active svg {
   fill: #F5EBEB;
 }
 
-.product-name {
-  margin-top: 16px;
+.product-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 18px;
+}
+
+.product-tag {
   font-family: Inter, system-ui, sans-serif;
-  font-size: 14px;
+  font-size: 10px;
   font-weight: 500;
-  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  color: rgba(212, 184, 184, 0.75);
+}
+
+.product-row {
+  width: 100%;
+  margin-top: 8px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.product-name {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
   color: #F5EBEB;
 }
 
 .product-price {
-  margin-top: 4px;
+  flex-shrink: 0;
+  font-family: Inter, system-ui, sans-serif;
   font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   color: #D4B8B8;
 }
 
 /* Rouge Privé Banner */
 .prive-banner {
   position: relative;
-  margin-top: 72px;
-  height: 520px;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 88px;
+  height: 560px;
   overflow: hidden;
   background-color: #330508;
 }
@@ -1321,53 +1404,56 @@ button:focus-visible {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 60% center;
+  object-position: center center;
+  transition: transform 1.6s ease-out;
+}
+
+.prive-banner:hover .prive-banner-image {
+  transform: scale(1.03);
 }
 
 .prive-banner-gradient {
   position: absolute;
-  left: 0;
+  top: 0;
   right: 0;
   bottom: 0;
-  height: 55%;
+  left: 0;
   pointer-events: none;
-  background: linear-gradient(to top, rgba(51, 5, 8, 0.88), rgba(51, 5, 8, 0.3), transparent);
+  background: linear-gradient(to top, rgba(51, 5, 8, 0.92) 0%, rgba(51, 5, 8, 0.45) 45%, rgba(51, 5, 8, 0.1) 100%);
 }
 
-.prive-banner-bar {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 28px;
+.prive-banner-content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  padding: 32px 28px;
 }
 
-.prive-banner-eyebrow {
-  font-size: 10px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.28em;
-  color: #D4B8B8;
-}
-
-.prive-banner-caption {
-  margin-top: 8px;
+.prive-banner-title {
+  margin-top: 20px;
   font-family: "Playfair Display", Georgia, serif;
-  font-size: 22px;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   color: #F5EBEB;
 }
 
+.prive-banner-copy {
+  margin-top: 16px;
+  max-width: 420px;
+  font-size: 14px;
+  line-height: 24px;
+  color: #D4B8B8;
+}
+
 .prive-banner-btn {
+  margin-top: 28px;
   border-color: #D4B8B8;
 }
 
 .prive-banner + .catalog-grid {
-  margin-top: 72px;
+  margin-top: 88px;
 }
 
 /* Quick-View Modal */
@@ -1662,21 +1748,24 @@ button:focus-visible {
 }
 
 .add-bag-btn {
-  margin-top: 0.75rem;
-  padding: 0.5rem 1rem;
+  margin-top: 16px;
+  padding: 9px 22px;
   border: 1px solid #D4B8B8;
-  border-radius: 999px;
-  background-color: transparent;
-  color: #D4B8B8;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
+  border-radius: 50px;
+  background: transparent;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+  color: #F5EBEB;
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .add-bag-btn:hover,
 .add-bag-btn.added {
+  border-color: #5E0B11;
   background-color: #5E0B11;
   color: #FFFFFF;
 }
@@ -1789,25 +1878,28 @@ button:focus-visible {
 
 /* Collections Page Responsive */
 @media (min-width: 768px) {
-  .header-bar-brand .mobile-brand {
-    display: block;
-    margin-right: auto;
-  }
-
   .collections-hero-box {
-    padding: 56px 48px;
+    padding: 64px 56px;
   }
 
   .collections-hero-title {
-    font-size: 64px;
+    font-size: 72px;
   }
 
   .catalog-container {
-    padding: 96px 48px 128px 48px;
+    padding: 112px 48px 128px 48px;
   }
 
-  .prive-banner-bar {
-    padding: 36px;
+  .catalog-title {
+    font-size: 48px;
+  }
+
+  .prive-banner-content {
+    padding: 56px;
+  }
+
+  .prive-banner-title {
+    font-size: 44px;
   }
 
   .site-footer {
@@ -1853,8 +1945,8 @@ button:focus-visible {
     height: 420px;
   }
 
-  .prive-banner-caption {
-    font-size: 19px;
+  .prive-banner-title {
+    font-size: 28px;
   }
 
   .quick-view {
