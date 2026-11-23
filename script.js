@@ -156,6 +156,7 @@ const SIZES = [
 const BAG_KEY = 'maisonRougeBag';
 const SAVED_KEY = 'maisonRougeSaved';
 const TOP_GRID_LIMIT = 4;
+const MAX_QTY = 10;
 
 let activeFilter = 'all';
 let activeSort = 'default';
@@ -231,7 +232,7 @@ function renderCollections() {
     }
 
     html += '<li class="' + cardClass + '">';
-    html += '<a href="#collections" class="collection-link">';
+    html += '<a href="collections.html" class="collection-link">';
     html += '<div class="collection-image-wrap ' + aspectClass + '">';
     html += '<img src="' + item.image + '" alt="' + item.alt + '" class="collection-image">';
     html += '<div class="collection-gradient"></div>';
@@ -367,6 +368,26 @@ function writeList(key, list) {
   }
 }
 
+function readBag() {
+  const saved = readList(BAG_KEY);
+  const bag = [];
+  for (let i = 0; i < saved.length; i++) {
+    const item = saved[i];
+    if (!item || !getBouquetById(item.id)) {
+      continue;
+    }
+    let qty = parseInt(item.qty, 10);
+    if (isNaN(qty) || qty < 1) {
+      continue;
+    }
+    if (qty > MAX_QTY) {
+      qty = MAX_QTY;
+    }
+    bag.push({ id: item.id, size: getSize(item.size).key, qty: qty });
+  }
+  return bag;
+}
+
 function getBouquetById(id) {
   for (let i = 0; i < BOUQUETS.length; i++) {
     if (BOUQUETS[i].id === id) {
@@ -433,12 +454,14 @@ function toggleSaved(id) {
 }
 
 function addToBag(id, sizeKey) {
-  const bag = readList(BAG_KEY);
+  const bag = readBag();
   let found = false;
 
   for (let i = 0; i < bag.length; i++) {
     if (bag[i].id === id && bag[i].size === sizeKey) {
-      bag[i].qty = bag[i].qty + 1;
+      if (bag[i].qty < MAX_QTY) {
+        bag[i].qty = bag[i].qty + 1;
+      }
       found = true;
     }
   }
@@ -453,7 +476,7 @@ function addToBag(id, sizeKey) {
 }
 
 function removeFromBag(index) {
-  const bag = readList(BAG_KEY);
+  const bag = readBag();
   const updated = [];
   for (let i = 0; i < bag.length; i++) {
     if (i !== index) {
@@ -466,12 +489,15 @@ function removeFromBag(index) {
 }
 
 function changeQty(index, change) {
-  const bag = readList(BAG_KEY);
+  const bag = readBag();
   const updated = [];
   for (let i = 0; i < bag.length; i++) {
     if (i === index) {
       const newQty = bag[i].qty + change;
-      if (newQty >= 1 && newQty <= 10) {
+      if (newQty < 1) {
+        continue;
+      }
+      if (newQty <= MAX_QTY) {
         bag[i].qty = newQty;
       }
     }
@@ -498,13 +524,21 @@ function setCount(elementId, count) {
 }
 
 function updateCounters() {
-  const bag = readList(BAG_KEY);
+  const bag = readBag();
   let bagTotal = 0;
   for (let i = 0; i < bag.length; i++) {
     bagTotal += bag[i].qty;
   }
   setCount('bag-count', bagTotal);
-  setCount('wishlist-count', readList(SAVED_KEY).length);
+
+  const saved = readList(SAVED_KEY);
+  let savedTotal = 0;
+  for (let i = 0; i < saved.length; i++) {
+    if (getBouquetById(saved[i])) {
+      savedTotal += 1;
+    }
+  }
+  setCount('wishlist-count', savedTotal);
 }
 
 /* ---------- Shopping bag drawer ---------- */
@@ -519,7 +553,7 @@ function renderDrawer() {
     return;
   }
 
-  const bag = readList(BAG_KEY);
+  const bag = readBag();
   const renderedIndexes = [];
   let html = '';
   let total = 0;
@@ -530,14 +564,15 @@ function renderDrawer() {
       continue;
     }
     renderedIndexes.push(i);
-    const linePrice = getSizedPrice(bouquet.price, bag[i].size) * bag[i].qty;
+    const unitPrice = getSizedPrice(bouquet.price, bag[i].size);
+    const linePrice = unitPrice * bag[i].qty;
     total += linePrice;
 
     html += '<li class="drawer-item">';
     html += '<img src="' + bouquet.image + '" alt="' + bouquet.alt + '" class="drawer-item-image ' + bouquet.crop + '">';
     html += '<div class="drawer-item-info">';
     html += '<p class="drawer-item-name">' + bouquet.name + '</p>';
-    html += '<p class="drawer-item-meta">' + getSize(bag[i].size).label + ' &middot; Qty ' + bag[i].qty + '</p>';
+    html += '<p class="drawer-item-meta">' + getSize(bag[i].size).label + ' &middot; $' + unitPrice + ' each</p>';
     html += '<div class="drawer-qty">';
     html += '<button type="button" class="drawer-qty-minus">-</button>';
     html += '<span class="drawer-qty-value">' + bag[i].qty + '</span>';
@@ -555,21 +590,21 @@ function renderDrawer() {
   itemsList.innerHTML = html;
   totalText.textContent = '$' + total;
 
-  const removeButtons = document.querySelectorAll('.drawer-remove');
+  const removeButtons = itemsList.querySelectorAll('.drawer-remove');
   for (let i = 0; i < removeButtons.length; i++) {
     removeButtons[i].addEventListener('click', function() {
       removeFromBag(renderedIndexes[i]);
     });
   }
 
-  const minusButtons = document.querySelectorAll('.drawer-qty-minus');
+  const minusButtons = itemsList.querySelectorAll('.drawer-qty-minus');
   for (let i = 0; i < minusButtons.length; i++) {
     minusButtons[i].addEventListener('click', function() {
       changeQty(renderedIndexes[i], -1);
     });
   }
 
-  const plusButtons = document.querySelectorAll('.drawer-qty-plus');
+  const plusButtons = itemsList.querySelectorAll('.drawer-qty-plus');
   for (let i = 0; i < plusButtons.length; i++) {
     plusButtons[i].addEventListener('click', function() {
       changeQty(renderedIndexes[i], 1);
@@ -632,7 +667,7 @@ function checkout() {
     return;
   }
 
-  const bag = readList(BAG_KEY);
+  const bag = readBag();
   if (bag.length === 0) {
     message.textContent = 'Your bag is empty. Choose a bouquet first.';
   } else {
@@ -864,20 +899,33 @@ function openQuickView(bouquet) {
   lastFocusedElement = document.activeElement;
 
   const image = document.getElementById('qv-image');
-  image.src = bouquet.image;
-  image.alt = bouquet.alt;
-  image.className = 'quick-view-image ' + bouquet.crop;
+  if (image) {
+    image.src = bouquet.image;
+    image.alt = bouquet.alt;
+    image.className = 'quick-view-image ' + bouquet.crop;
+  }
 
-  document.getElementById('qv-tag').textContent = getFilterLabel(bouquet.collection);
-  document.getElementById('qv-title').textContent = bouquet.name;
-  document.getElementById('qv-desc').textContent = bouquet.description;
-  document.getElementById('qv-stems').textContent = bouquet.stems;
+  setText('qv-tag', getFilterLabel(bouquet.collection));
+  setText('qv-title', bouquet.name);
+  setText('qv-desc', bouquet.description);
+  setText('qv-stems', bouquet.stems);
 
   renderSizePills();
 
   modal.classList.remove('hidden');
   document.body.classList.add('no-scroll');
-  document.getElementById('quick-view-close').focus();
+
+  const closeButton = document.getElementById('quick-view-close');
+  if (closeButton) {
+    closeButton.focus();
+  }
+}
+
+function setText(elementId, text) {
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.textContent = text;
+  }
 }
 
 function closeQuickView() {
@@ -975,6 +1023,7 @@ function setupShopEvents() {
   window.addEventListener('storage', function() {
     updateCounters();
     renderDrawer();
+    renderCatalog();
   });
 }
 
